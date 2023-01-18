@@ -390,7 +390,10 @@ const mhtml2html = {
 
                     default:
                         if (child.style) {
-                            child.style.cssText = replaceReferences(media, index, child.style.cssText);
+                            let t = replaceReferences(media, index, child.style.cssText);
+                            if (t && t != child.style.cssText) {
+                                child.style.cssText = t;
+                            }
                         }
                         break;
                 }
