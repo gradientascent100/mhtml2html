@@ -356,7 +356,11 @@ const mhtml2html = {
 
                     case 'IMG':
                         img = null;
-                        if (typeof media[src] !== 'undefined' && media[src].type.includes('image')) {
+
+                        if (
+                            typeof media[src] !== 'undefined' &&
+                            (media[src].type.includes('image') || media[src].type.includes('application/octet-stream'))
+                        ) {
                             // Embed the image into the document.
                             try {
                                 img = convertAssetToDataURI(media[src]);
